@@ -1,0 +1,14 @@
+.main{
+    background-color: #8a2bde;
+    padding: 0 !important;
+}
+
+.header a{
+    color: rgb(230, 221, 221);
+    padding:0 10px;
+    text-decoration: none;
+}
+
+.header a:hover{
+    color: white;
+}
