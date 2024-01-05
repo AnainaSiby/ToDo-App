@@ -10,7 +10,7 @@ export default function Header() {
   };
   return (
     <div>
-      <Navbar className={style.main} data-bs-theme="dark">
+      <Navbar className={style.main} data-bs-theme="dark" fixed="top">
         <Container fluid>
           <Navbar.Brand href="/">TODO APP</Navbar.Brand>
           <Nav className={style.header}>

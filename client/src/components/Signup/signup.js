@@ -2,23 +2,35 @@ import "./signup.css";
 import { FaHandPeace } from "react-icons/fa";
 import React, { useState } from "react";
 import AXIOS from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = (e)=>{
     e.preventDefault();
    const url = "http://localhost:9000/api/signup";
     AXIOS.post(url,{fname,lname,email,password}).then((res)=>{
-      alert(res.data)
+      var stat = res.data.status;
+      if(stat){
+        alert(res.data.msg)
+        setFname("");
+      setLname("")
+      setEmail("")
+      setPassword("")
+      navigate('/login')
+      }else{
+      alert(res.data.msg) 
+      }
     })
   };
   return (
     <div className="outer-main container-fluid">
       <div className="row">
-        <div className="col-lg-12 main">
+        <div className="col-lg-12 main-div">
           <h2> Sign Up </h2>
           <p>
             to make your time productive{" "}
@@ -30,7 +42,7 @@ export default function SignUp() {
             <form className="form-group" onSubmit={handleSubmit}>
               <div className="f-names">
                 <div style={{ marginRight: "5px" }}>
-                  <label for="first-name" className="form-label">
+                  <label className="form-label">
                     First Name <span style={{ color: "red" }}>*</span>
                   </label>
                   <input
@@ -39,11 +51,10 @@ export default function SignUp() {
                     className="form-control"
                     onChange={(e)=>setFname(e.target.value)}
                     value={fname}
-                    required
                   ></input>
                 </div>
                 <div>
-                  <label for="last-name" className="form-label">
+                  <label className="form-label">
                     Last Name <span style={{ color: "red" }}>*</span>
                   </label>
                   <input
@@ -52,11 +63,10 @@ export default function SignUp() {
                     className="form-control"
                     onChange={(e)=>setLname(e.target.value)}
                     value={lname}
-                    required
                   ></input>
                 </div>
               </div>
-              <label for="email" className="form-label">
+              <label className="form-label">
                 Email Address <span style={{ color: "red" }}>*</span>
               </label>
               <input
@@ -65,9 +75,8 @@ export default function SignUp() {
                 name="email"
                 onChange={(e)=>setEmail(e.target.value)}
                 value={email}
-                required
               ></input>
-              <label for="password" className="form-label">
+              <label className="form-label">
                 Password <span style={{ color: "red" }}>*</span>
               </label>
               <input
@@ -79,7 +88,7 @@ export default function SignUp() {
                 required
               ></input>
               <div className="d-grid btn-signin">
-                <input type="submit" value="Sign In" className="btn"></input>
+                <input type="submit" value="Sign Up" className="btn"></input>
               </div>
               <p>
                 Already a user? <a href="/login">Login</a>

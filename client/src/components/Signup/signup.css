@@ -1,21 +1,21 @@
 .outer-main {
   background-color: #f7fafc;
 }
-.main {
+.main-div {
   width: 35%;
   background-color: #f7fafc;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 70px;
-  margin-bottom: 30px;
+  margin-top: 80px;
+  margin-bottom: 40px;
 }
 
-.main h2 {
+.main-div h2 {
   font-weight: bolder;
   text-align: center;
 }
 
-.main p {
+.main-div p {
   text-align: center;
 }
 
@@ -61,7 +61,7 @@
 
 .form-group a {
   text-decoration: none;
-  color: black;
+  color: #2b6cb0;
   font-weight: bold;
 }
 
